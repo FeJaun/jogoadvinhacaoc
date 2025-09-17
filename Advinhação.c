@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main() {
+int main(){
     
     // imprime cabecalho do jogo
     printf("***********************************\n");
@@ -10,20 +10,33 @@ int main() {
     // declara variaveis
     int numeroSecreto = 42;
     int chute;
-
-    printf("Qual o seu chute? ");
-    scanf("%d", &chute);
-    printf("Seu chute foi %d\n", chute);
-
-    if(chute == numeroSecreto) {
-        printf("Voce acertou!\n");
-    } else {
-        if ( chute < numeroSecreto )
-            printf("Seu chute foi menor que o numero secreto\n");
-        if ( chute > numeroSecreto )
-            printf("Seu chute foi maior que o numero secreto\n");
-            
-    }
     
-    return 0;
+    for (int i = 1; i <= 3; i++) {    
+        // pede o chute do jogador
+        printf("Tentativa %d\n", i);
+        printf("Qual o seu chute? ");
+        
+        scanf("%d", &chute);
+        printf("Seu chute foi %d\n", chute);
+
+        int acertou = (chute == numeroSecreto);
+
+        if(acertou) {
+            printf("Voce acertou!\n");
+            printf("Jogue novamente, voce e um bom jogador!\n");
+            //para o loop
+            break;
+
+        } 
+        else {
+            int maior = (chute > numeroSecreto);
+            if (maior) {
+                printf("Seu chute foi maior que o numero secreto\n");
+            } else {
+                printf("Seu chute foi menor que o numero secreto\n");
+            }
+        }
+
+    }
+printf("Fim de jogo!\n");
 }
